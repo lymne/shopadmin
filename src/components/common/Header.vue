@@ -4,7 +4,6 @@
         <div class="user-info">
             <el-dropdown trigger="click" @command="handleCommand">
                 <span class="el-dropdown-link">
-                    <img class="user-logo" src="../../../static/img/img.jpg">
                     {{username}}
                 </span>
                 <el-dropdown-menu slot="dropdown">
@@ -42,9 +41,9 @@
         position: relative;
         box-sizing: border-box;
         width: 100%;
-        height: 70px;
+        height: 50px;
         font-size: 22px;
-        line-height: 70px;
+        line-height: 50px;
         color: #fff;
     }
     .header .logo{
@@ -66,15 +65,8 @@
         cursor: pointer;
         vertical-align: middle;
     }
-    .user-info .user-logo{
-        position: absolute;
-        left:0;
-        top:15px;
-        width:40px;
-        height:40px;
-        border-radius: 50%;
-    }
     .el-dropdown-menu__item{
         text-align: center;
+        line-height:20px;
     }
 </style>

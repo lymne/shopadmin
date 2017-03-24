@@ -1,18 +1,34 @@
 <template>
     <div class="table">
-        <div class="crumbs">
-            <el-breadcrumb separator="/">
-                <el-breadcrumb-item><i class="el-icon-menu"></i> 表格</el-breadcrumb-item>
-                <el-breadcrumb-item>基础表格</el-breadcrumb-item>
-            </el-breadcrumb>
-        </div>
-
+        <el-form :inline="true" :model="formInline" class="demo-form-inline">
+            <el-form-item label="审批人">
+                <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+            </el-form-item>
+            <el-form-item label="活动区域">
+                <el-select v-model="formInline.region"  placeholder="活动区域">
+                    <el-option label="区域一" value="shanghai"></el-option>
+                    <el-option label="区域二" value="beijing"></el-option>
+                </el-select>
+            </el-form-item><el-form-item>
+            <el-button type="primary" @click="onSubmit">查询</el-button>
+        </el-form-item>
+        </el-form>
         <el-table :data="tableData" border style="width: 100%">
-            <el-table-column prop="date" label="日期" sortable width="150">
+            <el-table-column prop="date" label="日期" sortable width="150" fixed="left">
             </el-table-column>
             <el-table-column prop="name" label="姓名" width="120">
             </el-table-column>
-            <el-table-column prop="address" label="地址" :formatter="formatter">
+            <el-table-column prop="address" label="地址" width="200">
+            </el-table-column>
+            <el-table-column prop="address" label="地址"width="200">
+            </el-table-column>
+            <el-table-column prop="address" label="地址" width="200">
+            </el-table-column>
+            <el-table-column prop="address" label="地址" width="200">
+            </el-table-column>
+            <el-table-column prop="address" label="地址"width="200" >
+            </el-table-column>
+            <el-table-column prop="address" label="地址" width="200">
             </el-table-column>
             <el-table-column prop="tag" label="标签" width="120"
                     :filters="[{ text: '家', value: '家' }, { text: '公司', value: '公司' }]"
@@ -22,7 +38,8 @@
                     </el-tag>
                 </template>
             </el-table-column>
-            <el-table-column label="操作" width="180">
+
+            <el-table-column label="操作" width="180" fixed="right">
                 <template scope="scope">
                     <el-button size="small"
                             @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
@@ -64,10 +81,17 @@
                     name: '小天才',
                     address: '东莞市长安镇步步高大道16号',
                     tag: '公司'
-                }]
+                }],
+                formInline: {
+                  user: '',
+                  region: ''
+                }
             }
         },
         methods: {
+            onSubmit(){
+                console.log(this.formInline.user, this.formInline.region)
+            },
             formatter(row, column) {
                 return row.address;
             },

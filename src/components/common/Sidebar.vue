@@ -1,6 +1,6 @@
 <template>
     <div class="sidebar">
-        <el-menu :default-active="onRoutes" class="el-menu-vertical-demo" theme="dark" unique-opened router>
+        <el-menu :default-active="onRoutes" class="el-menu-vertical-demo" unique-opened router>
             <el-menu-item index="readme">
                 <i class="el-icon-setting"></i>自述
             </el-menu-item>
@@ -41,7 +41,7 @@
         position: absolute;
         width: 250px;
         left: 0;
-        top: 70px;
+        top: 50px;
         bottom:0;
         background: #2E363F;
     }
