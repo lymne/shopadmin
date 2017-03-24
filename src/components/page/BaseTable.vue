@@ -9,9 +9,18 @@
                     <el-option label="区域一" value="shanghai"></el-option>
                     <el-option label="区域二" value="beijing"></el-option>
                 </el-select>
-            </el-form-item><el-form-item>
-            <el-button type="primary" @click="onSubmit">查询</el-button>
-        </el-form-item>
+            </el-form-item>
+            <el-form-item label="时间范围">
+                <el-date-picker
+                    v-model="formInline.time"
+                    type="datetimerange"
+                    placeholder="选择时间范围"
+                    align="right">
+                </el-date-picker>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="onSubmit">查询</el-button>
+            </el-form-item>
         </el-form>
         <el-table :data="tableData" border style="width: 100%">
             <el-table-column prop="date" label="日期" sortable width="150" fixed="left">
@@ -50,7 +59,7 @@
         </el-table>
         <div class="pagination">
             <el-pagination
-                    layout="prev, pager, next"
+                    layout="total, prev, pager, next"
                     :total="1000">
             </el-pagination>
         </div>
@@ -84,13 +93,14 @@
                 }],
                 formInline: {
                   user: '',
-                  region: ''
+                  region: '',
+                  time: ''
                 }
             }
         },
         methods: {
-            onSubmit(){
-                console.log(this.formInline.user, this.formInline.region)
+            onSubmit() {
+                console.log(this.formInline.user, this.formInline.region, this.formInline.time)
             },
             formatter(row, column) {
                 return row.address;
@@ -102,8 +112,12 @@
                 this.$message('编辑第'+(index+1)+'行');
             },
             handleDelete(index, row) {
-                this.$message.error('删除第'+(index+1)+'行');
+               this.$confirm('此操作将永久删除该文件, 是否继续?').then(() => {
+                  this.tableData.splice(index,1);
+                  this.$message.success('删除第'+(index+1)+'行');
+               })
             }
-        }
-    }
+         }
+     }
+
 </script>

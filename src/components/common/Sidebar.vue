@@ -39,7 +39,7 @@
     .sidebar{
         display: block;
         position: absolute;
-        width: 250px;
+        width: 180px;
         left: 0;
         top: 50px;
         bottom:0;
