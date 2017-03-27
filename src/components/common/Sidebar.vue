@@ -1,9 +1,16 @@
 <template>
     <div class="sidebar">
+
         <el-menu :default-active="onRoutes" class="el-menu-vertical-demo" unique-opened router>
-            <el-menu-item index="readme">
-                <i class="el-icon-setting"></i>自述
-            </el-menu-item>
+
+            <!--<el-menu-item index="readme">-->
+                <!--<i class="el-icon-setting"></i>自述-->
+            <!--</el-menu-item>-->
+            <el-submenu index="1">
+                <template slot="title"><i class="el-icon-menu"></i>商品管理</template>
+                <el-menu-item index="categorytable">分类管理</el-menu-item>
+
+            </el-submenu>
             <el-submenu index="2">
                 <template slot="title"><i class="el-icon-menu"></i>表格</template>
                 <el-menu-item index="basetable">基础表格</el-menu-item>
